@@ -1,6 +1,6 @@
 window.onload = function(){ //Acciones tras cargar la página
     pantalla=document.getElementById("textoPantalla"); //elemento pantalla de salida
-}
+};
 x="0"; //guardar número en pantalla
 xi=1; //iniciar número en pantalla: 1=si; 0=no;
 coma=0; //estado coma decimal 0=no, 1=si;
@@ -47,10 +47,39 @@ function igualar() {
     }
     else { //con operación pendiente resolvemos
         sl=ni+op+x; // escribimos la operación en una cadena
-        sol=eval(sl) //convertimos la cadena a código y resolvemos
-        pantalla.innerHTML=sol //mostramos la solución
+        sol=eval(sl); //convertimos la cadena a código y resolvemos
+        pantalla.innerHTML=sol; //mostramos la solución
         x=sol; //guardamos la solución
         op="no"; //ya no hay operaciones pendientes
         xi=1; //se puede reiniciar la pantalla.
     }
+}
+
+function raizc() {
+    x=Math.sqrt(x); //resolver raíz cuadrada.
+    pantalla.innerHTML=x; //mostrar en pantalla resultado
+    op="no"; //quitar operaciones pendientes.
+    xi=1; //se puede reiniciar la pantalla
+}
+
+function porcent() {
+    x=x/100; //dividir por 100 el número
+    pantalla.innerHTML=x; //mostrar en pantalla
+    igualar(); //resolver y mostrar operaciones pendientes
+    xi=1 //reiniciar la pantalla
+}
+
+function opuest() {
+    nx=Number(x); //convertir en número
+    nx=-nx; //cambiar de signo
+    x=String(nx); //volver a convertir a cadena
+    pantalla.innerHTML=x; //mostrar en pantalla.
+}
+
+function inve() {
+    nx=Number(x);
+    nx=(1/nx);
+    x=String(nx);
+    pantalla.innerHTML=x;
+    xi=1; //reiniciar pantalla al pulsar otro número.
 }
